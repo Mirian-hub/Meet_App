@@ -43,7 +43,7 @@ namespace MeetApp.API.Controllers
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto) 
         {
          
-          throw new Exception("computer sayes no !");
+          // throw new Exception("computer sayes no !");
           var userFromRepo =await _repo.Login(userForLoginDto.UserName, userForLoginDto.Password);
           if(userFromRepo==null)
            return Unauthorized();
