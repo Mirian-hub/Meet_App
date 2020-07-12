@@ -19,7 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-
+using AutoMapper;
 namespace MeetApp.API
 {
     public class Startup
@@ -36,9 +36,13 @@ namespace MeetApp.API
         {
             services.AddDbContext<DataContext>(x=> x.UseSqlite
             (Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson( opt => 
+              opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
             services.AddCors();
+            services.AddAutoMapper(typeof(MeetRepository).Assembly);
             services.AddScoped<IAuthorisationRepo, AuthorisationRepo>();
+            services.AddScoped<IMeetRepository, MeetRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
                 options => options.TokenValidationParameters = new TokenValidationParameters {
                     ValidateIssuerSigningKey = true,
@@ -48,7 +52,6 @@ namespace MeetApp.API
                 }
             );
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

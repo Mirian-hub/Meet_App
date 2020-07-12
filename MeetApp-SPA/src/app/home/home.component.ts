@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   }
   registerClick () {
     this.registerMode = true;
+    
   }
  
   cancelRegisterMode(registerMode: boolean) {
