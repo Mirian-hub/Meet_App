@@ -1,0 +1,59 @@
+
+<div class="ontainer">
+  <div class="row">
+    <div class="col-sm-4 left-side-main">
+      <div class="card">
+          <img src="" alt="{{user.photoUrl}}" class="card-img-top img-thumbnail" src="{{user.photoUrl}}">
+          <div class="card-body">
+            <div>
+              <strong> Location</strong>
+              <p> {{user.city}}, {{user.country}} </p>
+            </div>
+            <div> 
+              <strong> Age: </strong>
+              <p> {{user.age}} </p>
+            </div>
+
+            <div> 
+              <strong> Last Active: </strong>
+              <p> {{user.lastActive}} </p>
+            </div>
+            <div> 
+              <strong> Member Since: </strong>
+              <p> {{user.created}} </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="btn-group d-flex">
+              <button class="btn btn-success w-80">Like</button>
+              <button class="btn btn-primary w-80">Message</button>
+          </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-8 right-side-main">  
+      <div>
+        <mat-tab-group>
+          <mat-tab label="About {{user.knownAs}}">
+           <h2> Description </h2>
+           <p> {{user.intoroduction}} </p>
+           <h2> Looking For </h2>
+           <p>{{user.lookingFor}}</p>  
+          </mat-tab>
+          <mat-tab label="Interests"> 
+           <h2>Interests</h2>
+           <p>{{user.interests}}</p>  
+          </mat-tab>
+          <mat-tab label="Photoes"> 
+            <ngx-gallery style="display:inline-block; margin-bottom: 200px;" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </mat-tab>
+          <mat-tab label="Messages"> 
+            <h2>Messgaes will go here</h2>             
+           </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+

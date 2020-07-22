@@ -11,11 +11,11 @@ namespace MeetApp.API.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly IMeetRepository _repo;
         private readonly IMapper _mapper;
-        public UserController(IMeetRepository repo, IMapper mapper)
+        public UsersController(IMeetRepository repo, IMapper mapper)
         {
             this._mapper = mapper;
             this._repo = repo;
