@@ -25,7 +25,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MemberDetailResolver} from './_resolvers/member-detail.resolver';
 import {MemberListResolver} from './_resolvers/member-list.resolver copy';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
-
+import {UserEditComponent} from './members/user-edit/user-edit.component';
+import {MemberEditResolver} from './_resolvers/member-edit.resolver copy';
+import {PreventUnsavedChanges} from './_guards/unsaved_changes.guard';
 export function tokenGetter() {
    return localStorage.getItem('Token');
 }
@@ -41,6 +43,7 @@ export function tokenGetter() {
       MessagesComponent,
       MemberCardComponent,
       MemberDetailComponent,
+      UserEditComponent
    ],
    imports: [
       MatTabsModule,
@@ -65,7 +68,9 @@ export function tokenGetter() {
       AuthService,
       ErrorInterceptorProvider,
       MemberDetailResolver,
-      MemberListResolver
+      MemberListResolver,
+      MemberEditResolver,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent

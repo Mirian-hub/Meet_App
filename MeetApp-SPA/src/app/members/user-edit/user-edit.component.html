@@ -1,0 +1,74 @@
+
+<div class="ontainer">
+  <div class="row">
+    
+    <div class="col-sm-4">
+      <h1> Your Profile </h1>
+    </div>
+    <div  class="col-sm-8 ">
+      <div *ngIf="editForm.dirty" class="alert alert-info"> 
+       <strong>Changes :  </strong> If you close the window unsaved chages will be lost ! 
+      </div>
+    </div>
+    <div class="col-sm-4 left-side-main">
+      
+      <div class="card">
+          
+          <img src="" alt="{{user.photoUrl}}" class="card-img-top img-thumbnail" src="{{user.photoUrl}}">
+          <div class="card-body">
+            <div>
+              <strong> Location</strong>
+              <p> {{user.city}}, {{user.country}} </p>
+            </div>
+            <div> 
+              <strong> Age: </strong>
+              <p> {{user.age}} </p>
+            </div>
+
+            <div> 
+              <strong> Last Active: </strong>
+              <p> {{user.lastActive}} </p>
+            </div>
+            <div> 
+              <strong> Member Since: </strong>
+              <p> {{user.created}} </p>
+            </div>
+          </div>
+          <div class="card-footer">
+              <button [disabled]="!editForm.dirty" class="btn btn-success w-80" form="editForm">Save Changes </button>
+          </div>
+      </div>
+    </div>
+    <div class="col-sm-8 right-side-main">  
+      <div>
+        <mat-tab-group>
+          <mat-tab label="Edit Profile">
+           <form #editForm= "ngForm" id="editForm" (ngSubmit)="editUser()"> 
+            <h2> Description </h2>
+            <textarea name="intoduction" rows="6" class="form-control" 
+              [(ngModel)]= "user.intoduction"> </textarea>
+            <h2> Looking For </h2>
+            <textarea name="lookingFor" rows="6" class="form-control" 
+            [(ngModel)]= "user.lookingFor"> </textarea>
+            <h2> Interests </h2>
+            <textarea name="interests" rows="6" class="form-control" 
+            [(ngModel)]= "user.interests"> </textarea>
+            <div class="form-inline">
+              <label for="city">City</label>
+              <input class="form-control" type="text" name="city" [(ngModel)]="user.city">
+              <label for="country"></label>
+              <input type="text" class="form-control" name="country" [(ngModel)]="user.country">  
+            </div>
+          </form>  
+          </mat-tab>
+          <mat-tab label="Edit Photos"> 
+           <h2>Photos</h2>
+            Photo Edit will go here
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</div>
+
+

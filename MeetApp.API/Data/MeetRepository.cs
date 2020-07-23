@@ -25,13 +25,13 @@ namespace MeetApp.API.Data
 
         public async Task<User> GetUser(int id)
         {
-           var user = await this._context.Users.Include(c =>c.Photos).FirstOrDefaultAsync(u =>u.Id == id);
+           var user = await this._context.Users.Include(c => c.Photos).FirstOrDefaultAsync(u =>u.Id == id);
            return user;
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users =await this._context.Users.Include(u =>u.Photos).ToListAsync();
+            var users =await this._context.Users.Include(u => u.Photos).ToListAsync();
             return users;
         }
 

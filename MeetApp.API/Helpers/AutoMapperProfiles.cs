@@ -16,6 +16,7 @@ namespace MeetApp.API.Helpers
             .ForMember(dest => dest.Age, opt => opt.MapFrom(src =>src.DateOfBirth.GetAge()))
             .ForMember(dest =>dest.PhotoUrl, opt => opt.MapFrom(src => src.Photos.FirstOrDefault(p=>p.IsMain).Url));
             CreateMap<Photo, PhotoForDetailsDto>();
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }

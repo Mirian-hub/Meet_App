@@ -10,7 +10,7 @@ export interface User {
     city: string;
     country: string;
     photoUrl: string;
-    intoroduction?: string;
+    intoduction?: string;
     lookingFor?: string;
     interests?: string;
     photos?: Photo[];
